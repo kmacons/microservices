@@ -13,15 +13,11 @@ services:
                         - consul
                 build: rng
                 container_name: rng
-                environment:
-                        - SRVRNGPORT=${SRVRNGPORT}
         hasher:
                 depends_on:
                         - consul
                 build: hasher
                 container_name: hasher
-                environment:
-                        - SRVHASHERPORT=${SRVHASHERPORT}
         redis:
                 image: redis
                 container_name: redis
@@ -30,11 +26,6 @@ services:
                         - consul
                 build: worker
                 container_name: worker
-                environment:
-                        - SRVRNGPORT=${SRVRNGPORT}
-                        - SRVRNGNAME=${SRVRNGNAME}
-                        - SRVHASHERPORT=${SRVHASHERPORT}
-                        - SRVHASHERNAME=${SRVHASHERNAME}
         webui:
                 depends_on:
                         - consul
